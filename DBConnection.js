@@ -3,10 +3,10 @@ const mysql = require('mysql');
 function newConnection()
 {
     let conn = mysql.createConnection({
-        host:'34.133.120.25',
+        host:'34.134.150.79',
         user: 'root',
-        password: 'Icecream12#',
-        database: 'usersDB'
+        password:'icecream12#',
+        database:'MyStoreDB'
     });
     return conn;
 }
