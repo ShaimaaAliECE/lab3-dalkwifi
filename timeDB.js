@@ -4,7 +4,7 @@ let conn = mysql.createConnection({
     host:'34.134.150.79',
     user: 'root',
     password:'icecream12#',
-    database:'MyStoreDB'
+    database:'TimeSlote'
 });
 
 conn.connect();
@@ -20,7 +20,7 @@ conn.query(`CREATE TABLE Time
                 Time7 varchar(10),
                 Time8 varchar(10),
                 Time9 varchar(10),
-                Time10 varchar(10),
+                Time10 varchar(10)
             )
             ` 
             , (err,rows,fields) => {
@@ -29,14 +29,5 @@ conn.query(`CREATE TABLE Time
                 else
                     console.log('Table Created');
             })
-
-conn.query( `select * from Time `
-            , (err,rows,fields) => {
-                if (err)
-                    console.log(err);
-                else
-                    console.log('One row inserted');
-                for (r of rows)
-                    console.log(r);
-            });
+            
 conn.end();

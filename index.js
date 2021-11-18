@@ -39,7 +39,7 @@ app.get('/add-time', (req,res) => {
 app.get('/time', (request, response) => {
     let conn=newConnection();
     conn.connect();
-    let productList;
+    let timeAvaliable;
     conn.query(`select * from Time`, (err,rows,fields) => {
 
         if (err)

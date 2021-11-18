@@ -6,7 +6,7 @@ function newConnection()
         host:'34.134.150.79',
         user: 'root',
         password:'icecream12#',
-        database:'MyStoreDB'
+        database:'TimeSlote'
     });
     return conn;
 }
