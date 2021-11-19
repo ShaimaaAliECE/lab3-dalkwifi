@@ -8,52 +8,46 @@
 </head>
 <body>
 
-<div class="container">
   <h2>Doodle Page</h2>
-  <p>The form below contains the avaliable times:</p>
-  <form>
-    <h4>Username : <input name='usr' type='text'></h4>
-    <label>
-      <input type="checkbox" value="">
-      <input time='time1' type='text'>
-    </label>
-    <label>
-      <input type="checkbox" value=""> 
-      <input time='time' type='text'>
-    </label>
-    <label>
-      <input type="checkbox" value="">
-      <input time='time' type='text'>
-    </label>
-    <label>
-        <input type="checkbox" value="">
-        <input time='time' type='text'>
-    <label>
-        <input type="checkbox" value="">
-        <input time='time' type='text'>
-    </label>
-    <br />
-    <label>
-        <input type="checkbox" value="">
-        <input time='time' type='text'>
-    </label>
-    <label>
-        <input type="checkbox" value="">
-        <input time='time' type='text'>
-    </label>
-    <label>
-        <input type="checkbox" value="">
-        <input time='time' type='text'>
-    </label>
-    <label>
-        <input type="checkbox" value="">
-        <input time='time' type='text'>
-    </label>
-    <label>
-        <input type="checkbox" value="">
-        <input time='time' type='text'>
-    </label>
+  <a href='/time'>Click here to see list of avaliable time</a>
+  <p>Check the box for your avaliabiltiy:</p>
 
+  <form action="/add-guest" method='get'>
+    <input type="text" name="guest" placeholder="Enter Your Name">
+    <p>Schedule your availabe times: </p>
+
+    <input type="checkbox" name="time1" value="Slot1">
+    <label for="time1">Time Slot 1</label>
+
+    <input id="check2" type="checkbox" name="t2" value="Slot2">
+    <label for="t2">Time Slot 2</label>
+
+    <input id="check3" type="checkbox" name="t3" value="Slot3">
+    <label for="t3">Time Slot 3</label>
+
+    <input id="check4" type="checkbox" name="t4" value="Slot4">
+    <label for="t4">Time Slot 4</label>
+    
+    <input id="check5" type="checkbox" name="t5" value="Slot5">
+    <label for="t5">Time Slot 5</label>
+
+    <input id="check6" type="checkbox" name="t6" value="Slot6">
+    <label for="t6">Time Slot 6</label>
+
+    <input id="check7" type="checkbox" name="t7" value="Slot7">
+    <label for="t7">Time Slot 7</label>
+
+    <input id="check8" type="checkbox" name="t8" value="Slot8">
+    <label for="t8">Time Slot 8</label>
+
+    <input id="check9" type="checkbox" name="t9" value="Slot9">
+    <label for="t9">Time Slot 9</label>
+
+    <input id="check10" type="checkbox" name="t10" value="Slot10">
+    <label for="t10">Time Slot 10</label>
+    <br />
+    <input type="submit">
+  
     
   </form>
 </div>

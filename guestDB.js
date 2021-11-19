@@ -9,7 +9,7 @@ let conn = mysql.createConnection({
 
 conn.connect();
 
-conn.query(`Drop Table Time`,
+conn.query(`Drop Table Guest`,
                 (err,rows,fields) => {
                     if (err)
                         console.log(err);
@@ -18,18 +18,19 @@ conn.query(`Drop Table Time`,
                 }
             )
 
-conn.query(`CREATE TABLE Time
+conn.query(`CREATE TABLE Guest
             (
-                Time1 varchar(100),
-                Time2 varchar(100),
-                Time3 varchar(100),
-                Time4 varchar(100),
-                Time5 varchar(100),
-                Time6 varchar(100),
-                Time7 varchar(100),
-                Time8 varchar(100),
-                Time9 varchar(100),
-                Time10 varchar(100)
+                Name varchar (100),
+                One varchar(100),
+                Two varchar(100),
+                Three varchar(100),
+                Four varchar(100),
+                Five varchar(100),
+                Six varchar(100),
+                Seven varchar(100),
+                Eight varchar(100),
+                Nine varchar(100),
+                Ten varchar(100)
             )
             ` 
             , (err,rows,fields) => {
@@ -38,7 +39,7 @@ conn.query(`CREATE TABLE Time
                 else
                     console.log('Table Created');
             })
-conn.query( `insert into Time values ("10","10","10","10","10","10","10","10","10","10")`
+conn.query( `insert into Guest values ("Admin","11","11","11","11","11","11","11","11","11","11")`
             , (err,rows,fields) => {
                 if (err)
                     console.log(err);
@@ -46,7 +47,7 @@ conn.query( `insert into Time values ("10","10","10","10","10","10","10","10","1
                     console.log('One row inserted');
             });
 
-conn.query( `select * from Time `
+conn.query( `select * from Guest `
             , (err,rows,fields) => {
                 if (err)
                     console.log(err);
