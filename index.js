@@ -1,3 +1,4 @@
+const { response } = require('express');
 const express = require('express');
 
 const newConnection = require('./DBConnection');
@@ -62,6 +63,42 @@ app.get('/time', (request, response) => {
     conn.end();
 })
 
+
+app.get('/guestPage', (request, response) => {
+    let conn=newConnection();
+    conn.connect();
+    let timeAvaliable;
+    conn.query(`SELECT * FROM Time ORDER BY time1 ASC LIMIT 1`, (err,rows,fields) => {
+
+        if (err)
+            response.send('ERROR: ' +err)
+        else
+        {
+            timeAvaliable = rows;
+
+            let content ='';
+            for (p of timeAvaliable)
+            {
+                content += `<p>`+ 'name' +`</p>` + " "
+                content += `<p>`+ p.Time1 +`</p>` + " "
+                content += `<p>`+ p.Time2 +`</p>` + " "
+                content += `<p>`+ p.Time3 +`</p>` + " "
+                content += `<p>`+ p.Time4 +`</p>` + " "
+                content += `<p>`+ p.Time5 +`</p>` + " "
+                content += `<p>`+ p.Time6 +`</p>` + " "
+                content += `<p>`+ p.Time7 +`</p>` + " "
+                content += `<p>`+ p.Time8 +`</p>` + " "
+                content += `<p>`+ p.Time9  +`</p>` + " "
+                content += `<p>`+ p.Time10 +`</p>` + " "
+            }
+
+            response.send(content);
+        }
+    })    
+
+    conn.end();
+})
+    
 //add data to the Guest tabel
 app.get('/add-guest', (req,res) => {
     let conn = newConnection();
