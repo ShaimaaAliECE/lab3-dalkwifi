@@ -8,24 +8,29 @@
     <title>Login Form</title>
 </head>
 <body>
-    <h1>Welcome</h1>
+    <h1>Welcome To Doodle</h1>
     <h2>Login Page</h2>
     <div class="login">
-    <form id="login" method="get" action="/timeSheet.html">
+    <form id="login" action='/login' method='post'>
         <label><b>User Name     
         </b>    
         </label>    
-        <input type="text" name="Uname" id="Uname" placeholder="Username">    
+        <input type="text" name="usr" id="Uname" placeholder="Username">    
         <br><br>    
         <label><b>Password     
         </b>    
         </label>    
-        <input type="Password" name="Pass" id="Pass" placeholder="Password">    
+        <input type="Password" name="pwd" id="Pass" placeholder="Password">    
         <br><br>    
-        <input type="button" name="log" id="log" value="Log In Here"> 
-        </form>
-        
-        
+        <input type="submit" name="log" id="log" value="Log In Here"> 
+        <br><br> 
+    </form>
+    
+    <form action = "/guestPage">
+        <input type="submit" name="log" id="log" value="Continue as a Guest">  
+    </form>
+
+       
 </div>
 </body>
 </html>
