@@ -66,36 +66,7 @@ app.get('/time', (request, response) => {
     conn.end();
 })
 
-app.get('/timeList', (request, response) => {
-    let conn=newConnection();
-    conn.connect();
-    let timeAvaliable;
-    conn.query(`SELECT * FROM Time WHERE Time1=(SELECT max(Time1) FROM Time)`, (err,rows,fields) => {
 
-        if (err)
-            response.send('ERROR: ' +err)
-        else
-        {
-            timeAvaliable = rows;
-
-            let content ='';
-            for (t of timeAvaliable)
-            {
-                content += '<div>';
-                content += "Time Slote 1: "+t.Time1 +"<br />" +"Time Slote 2: " + t.Time2 +"<br />" + "Time Slote 3: " + t.Time3+ "<br />" +"Time Slote 4: " + t.Time4+ "<br />" +
-                "Time Slote 5: " + t.Time5+"<br />" + "Time Slote 6: " + t.Time6+"<br />" + "Time Slote 7: " + t.Time7+"<br />" + "Time Slote 8: " + t.Time8+
-                "<br />" +"Time Slote 9: " + t.Time9 + "<br />" +"Time Slote 10: " + t.Time10+ "<br />"+"<br />"
-                content += "</div>";
-                content += '\n';
-            }
-
-            response.send(content);
-        }
-    })    
-
-    conn.end();
-})
-    
 //add data to the Guest tabel
 app.get('/add-guest', (req,res) => {
     let conn = newConnection();
