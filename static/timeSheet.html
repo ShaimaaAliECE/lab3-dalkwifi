@@ -4,40 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">   
     <title>Document</title>
 </head>
 <body>
     
-    <h2>Doodle Page</h2>
-    <p>Enter Time: </p>
-    <form name='myform' action ="/add-time">
-        Time 1:<input name='time1'>
+    <h2>Admin Page</h2>
+    <a href='/timeList'>Look at Previous Submissions</a>
+    <h3>Enter Time: </h3>
+    <form id='myform' action ="/add-time">
+        Time Slot 1:<input name='time1'>
         <br />
-        Time 2:<input name='time2'>
+        Time Slot 2:<input name='time2'>
         <br />
-        Time 3:<input name='time3' >
+        Time Slot 3:<input name='time3' >
         <br />
-        Time 4:<input name='time4'>
+        Time Slot 4:<input name='time4'>
         <br />
-        Time 5:<input name='time5'>
+        Time Slot 5:<input name='time5'>
         <br />
-        Time 6:<input name='time6'>
+        Time Slot 6:<input name='time6'>
         <br />
-        Time 7:<input name='time7'>
+        Time Slot 7:<input name='time7'>
         <br />
-        Time 8:<input name='time8'>
+        Time Slot 8:<input name='time8'>
         <br />
-        Time 9:<input name='time9'>
+        Time Slot 9:<input name='time9'>
         <br />
-        Time 10:<input name='time10'>
-        <br />
+        Time Slot 10:<input name='time10'>
+        <br><br>
         <input type="submit" fromaction="/time">
-        <br />
-        <a href='/schedule'>Click here to see list of guest avaliable time</a>
+        
+        
     </form>
-
-    <p>Time:</p>
-    <p id ='f1'></p>
+    <br><br>
+    <a href='/schedule'>Click here to see list of guest avaliable time</a>
 
 </body>
 </html>

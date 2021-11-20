@@ -23,6 +23,7 @@ app.post('/login', (req,res) => {
     res.send(message);
 })
 
+//add time slot into the Time table
 app.get('/add-time', (req,res) => {
     let conn = newConnection();
     conn.connect();
@@ -34,6 +35,7 @@ app.get('/add-time', (req,res) => {
     conn.end();
 })
 
+//select all the times form the Time table and displays it 
 app.get('/time', (request, response) => {
     let conn=newConnection();
     conn.connect();
@@ -50,8 +52,9 @@ app.get('/time', (request, response) => {
             for (t of timeAvaliable)
             {
                 content += '<div>';
-                content += "Time Slote 1: "+t.Time1 + ", Time Slote 2: " + t.Time2 + ", Time Slote 3: " + t.Time3+ ", Time Slote 4: " + t.Time4+ ", Time Slote 5: " + t.Time5+ ", Time Slote 6: " + t.Time6+ ", Time Slote 7: " + t.Time7+ ", Time Slote 8: " + t.Time8+
-                 ", Time Slote 9: " + t.Time9 + ", Time Slote 10: " + t.Time10
+                content += "Time Slote 1: "+t.Time1 +"<br />" +"Time Slote 2: " + t.Time2 +"<br />" + "Time Slote 3: " + t.Time3+ "<br />" +"Time Slote 4: " + t.Time4+ "<br />" +
+                "Time Slote 5: " + t.Time5+"<br />" + "Time Slote 6: " + t.Time6+"<br />" + "Time Slote 7: " + t.Time7+"<br />" + "Time Slote 8: " + t.Time8+
+                "<br />" +"Time Slote 9: " + t.Time9 + "<br />" +"Time Slote 10: " + t.Time10+ "<br />"+"<br />"
                 content += "</div>";
                 content += '\n';
             }
@@ -63,12 +66,11 @@ app.get('/time', (request, response) => {
     conn.end();
 })
 
-
-app.get('/guestPage', (request, response) => {
+app.get('/timeList', (request, response) => {
     let conn=newConnection();
     conn.connect();
     let timeAvaliable;
-    conn.query(`SELECT * FROM Time ORDER BY time1 ASC LIMIT 1`, (err,rows,fields) => {
+    conn.query(`SELECT * FROM Time WHERE Time1=(SELECT max(Time1) FROM Time)`, (err,rows,fields) => {
 
         if (err)
             response.send('ERROR: ' +err)
@@ -77,19 +79,14 @@ app.get('/guestPage', (request, response) => {
             timeAvaliable = rows;
 
             let content ='';
-            for (p of timeAvaliable)
+            for (t of timeAvaliable)
             {
-                content += `<p>`+ 'name' +`</p>` + " "
-                content += `<p>`+ p.Time1 +`</p>` + " "
-                content += `<p>`+ p.Time2 +`</p>` + " "
-                content += `<p>`+ p.Time3 +`</p>` + " "
-                content += `<p>`+ p.Time4 +`</p>` + " "
-                content += `<p>`+ p.Time5 +`</p>` + " "
-                content += `<p>`+ p.Time6 +`</p>` + " "
-                content += `<p>`+ p.Time7 +`</p>` + " "
-                content += `<p>`+ p.Time8 +`</p>` + " "
-                content += `<p>`+ p.Time9  +`</p>` + " "
-                content += `<p>`+ p.Time10 +`</p>` + " "
+                content += '<div>';
+                content += "Time Slote 1: "+t.Time1 +"<br />" +"Time Slote 2: " + t.Time2 +"<br />" + "Time Slote 3: " + t.Time3+ "<br />" +"Time Slote 4: " + t.Time4+ "<br />" +
+                "Time Slote 5: " + t.Time5+"<br />" + "Time Slote 6: " + t.Time6+"<br />" + "Time Slote 7: " + t.Time7+"<br />" + "Time Slote 8: " + t.Time8+
+                "<br />" +"Time Slote 9: " + t.Time9 + "<br />" +"Time Slote 10: " + t.Time10+ "<br />"+"<br />"
+                content += "</div>";
+                content += '\n';
             }
 
             response.send(content);
@@ -105,25 +102,27 @@ app.get('/add-guest', (req,res) => {
     conn.connect();
     conn.query(`insert into Guest values ('${req.query.guest}','${req.query.time1}','${req.query.t2}','${req.query.t3}','${req.query.t4}','${req.query.t5}','${req.query.t6}','${req.query.t7}','${req.query.t8}','${req.query.t9}','${req.query.t10}')`
             ,(err,rows,fields) => {
-                res.redirect('/schedule');        
+                res.redirect('/guestTime');        
             } );
 
     conn.end();
 })
 
 //displays the data from the Guest table
-app.get('/schedule', (req, res) => {
+app.get('/guestTime', (req, res) => {
     let conn=newConnection();
     let guestList;
     conn.connect();
         conn.query(`select * from Guest`,(err,rows,fields) =>{
             guestList = rows;
             let content ='';
-            for (g of guestList){
+            for (t of guestList){
                 content += '<div>';
-                content += g.Name+':'+g.One+ ','+g.Two + ','+g.Three + ','+g.Four + ','+g.Five + ','+g.Six + ','+g.Seven + ','+g.Eight + ','+g.Nine + ','+g.Ten
-                content +='</div>';
-                content += '\n'
+                content += `<p>`+t.Name+":"+`</p>`;
+                content += t.One +", " + t.Two +", " + t.Three+ ", " + t.Four+ ", " +  t.Five+", " + t.Six+ ", " + t.Seven+", " +  t.Eight+", " + 
+                 t.Nine + ", " +  t.Ten+ "<br />"+"<br />"
+                content += "</div>";
+                content += '\n';
             }
             res.send(content);
         });

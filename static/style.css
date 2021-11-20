@@ -6,11 +6,11 @@ body
     font-family: 'Arial';  
 }  
 .login{  
-        width: 382px;  
+        width: 320px;  
         overflow: hidden;  
         margin: auto;  
         margin: 20 0 0 450px;  
-        padding: 80px;  
+        padding: 60px;  
         background: #23463f;  
         border-radius: 15px ;  
           
@@ -26,9 +26,13 @@ h2{
     padding: 20px;  
 }  
 label{  
-    color: #08ffd1;  
+    color: #24b197;  
     font-size: 17px;  
 }  
+#checkbox label{
+    color: black;  
+    font-size: 17px; 
+}
 #Uname{  
     width: 300px;  
     height: 30px;  
@@ -58,7 +62,13 @@ span{
     color: white;  
     font-size: 17px;  
 }  
-a{  
-    float: right;  
-    background-color: grey;  
-} 
+
+
+#myform{
+    cursor: pointer;
+    display: inline-block;
+    padding: 3px 6px;
+    width: 150px;
+    vertical-align: top;
+    text-align: center;
+}
